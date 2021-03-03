@@ -1,0 +1,37 @@
+
+
+<!-- <input class="form-control" type="text" name="title" [(ngModel)]="searchText"  (ngModelChange)="getElementsMotCle()"placeholder="Recherche par mot clé"> -->
+<div class="le" style="margin: 10px">
+  <form class="form-inline" (ngSubmit)="getElementsMotCle()">
+    <input class="form-control mr-sm-2 " type="search" placeholder="Search" aria-label="Search" [(ngModel)]="searchText" name="searchText">
+    <button class="btn btn-outline-success my-2 my-sm-0" type="submit" >Recherche</button>
+ </form> 
+</div>
+
+<ul class="list list-group" *ngFor="let element of elements | async |slice: (page-1)*pageSize : (page-1)*pageSize + pageSize" #idVal>
+    
+    <li >
+        <div class="container">
+            <div class="row">
+              <div class="col-sm">
+                <img src="{{element.url}}" class="image1">
+              </div>
+              <div class="col-sm title_police">
+                <label><h4>Titre:</h4> <h6>{{element.title}}</h6></label>
+                <h6><a href="{{element.thumbnailUrl }}"> PLUS INFO </a></h6>
+              </div>
+            
+              <div class="col-sm">
+                <a  class="btn btn-danger" (click)="deleteElements(element.id)" >Supprimer</a>
+              </div>
+            </div>
+          </div>
+        
+    </li>
+    <hr>
+</ul>
+<ngb-pagination [collectionSize]="50" 
+                [(page)]="page" 
+                [pageSize]="pageSize" 
+                >
+</ngb-pagination>
