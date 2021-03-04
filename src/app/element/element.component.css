@@ -52,5 +52,14 @@
     text-align: center ;
 }
 .title_police{
-    font-family :'Georgia', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif
+    font-family :'Georgia', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif ;
+}
+.card{
+    padding: 10px;
+}
+.sup{
+    font-family :'Georgia', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif ;
+}
+.reach{
+    font-family :'Georgia', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif ;
 }

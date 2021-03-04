@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-element',
@@ -8,10 +9,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ElementComponent implements OnInit {
 
-  constructor(private http : HttpClient) { }
+  constructor(private http : HttpClient,private router:Router) { }
   elements : any ;
-  page = 1;
-  pageSize = 3 ;
+  page = 2;
+  pageSize = 10 ;
   searchText :any ; // ngModel
   ngOnInit(): void {
     this.getElements();
@@ -19,7 +20,7 @@ export class ElementComponent implements OnInit {
   getElements(){
     return this.elements = this.http.get("http://jsonplaceholder.typicode.com/photos");
   }
-  getElementsMotCle(){
+  getElementsByTilte(){
     if(this.searchText ==""){
       this.ngOnInit();
     }
@@ -28,9 +29,11 @@ export class ElementComponent implements OnInit {
     } 
   }
   deleteElements(id){
-    console.log(id);
+    console.log("L'élement " +id+ " supprimé");
     return this.http.delete("http://jsonplaceholder.typicode.com/photos/"+id);
    
   } 
-   
+  onSelect(element){
+       this.router.navigate(['/element',element.id]);
+  }
 }
