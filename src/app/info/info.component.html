@@ -1,4 +1,19 @@
-Bonjour 
-
+<ul class="list list-group" *ngFor="let element of elements | async">
+    
+    <li >
+        <div class="container card">
+            <div class="row">
+              <div class="col-sm">
+                <img src="{{element.url}}" class="image1" id="image1">
+              </div>
+              <div class="col-sm title_police">
+                <label><h4>Titre:</h4> <h6>{{element.title}}</h6></label>  
+              </div>
+            </div>
+          </div>
+        
+    </li>
+    
+</ul>
 
 

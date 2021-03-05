@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import {ActivatedRoute} from '@angular/router';
+import {ActivatedRoute,ParamMap} from '@angular/router';
 import { Observable } from 'rxjs';
 @Component({
   selector: 'app-info',
@@ -9,17 +9,14 @@ import { Observable } from 'rxjs';
 })
 export class InfoComponent implements OnInit {
   public idElement ;
-  element ;
-  
+  elements  ;
+  color;
   constructor(private route : ActivatedRoute,private http : HttpClient) { }
 
-  ngOnInit(): void {
-    let id = parseInt(this.route.snapshot.paramMap.get("id"));
+  ngOnInit() {
+    let id = parseInt(this.route.snapshot.paramMap.get('id'));
     this.idElement = id ;
-    this.getElementById();
-    console.log(this.element);
+    this.elements = this.http.get("http://jsonplaceholder.typicode.com/photos?id="+this.idElement);
+  
   } 
-  getElementById(){
-      return this.element = this.http.get("http://jsonplaceholder.typicode.com/photos?id="+this.idElement);
-  }
 }
